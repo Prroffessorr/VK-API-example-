@@ -44,29 +44,7 @@ for($i=0; $i<$total; $i++) {
 	print_r($total);
 	print_r($post_data);
 	?>
-	<!-- HTML form-->
-<head>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-</head>
-<body>
-	<?php if (!empty($error)): ?> 
-	<?= $error ?><?php elseif (!empty($result)): ?> 
-	<?= $result ?><?php endif; ?><br>
-    <section class="content">
-        <div class="container">
-            <div class="content-container-flex">
-
-                <div class="content-container">
-                  Отправка фотографий в альбом 
-                <form action="" method="post" enctype="multipart/form-data">
-                            <input type="text" name="messagelink"  placeholder="Ссылка на альбом"/>
-                            <input type="file" name="attachment[]" multiple="multiple" id="att" > <input type="submit"name="ok_album" >        
-                </form>
-            </div>
-        </div>
-    </section>
-<?php print_r($post_data); ?>
-</body>
+	
 	<?php
 
 $string=$_POST['messagelink'];
@@ -92,7 +70,6 @@ $v = '5.62'; //версия vk api
  curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
  curl_setopt($ch, CURLOPT_POSTFIELDS,$post_data);
  $result = json_decode(curl_exec($ch),true);
- print_r($result);
  $params = array(
  'v'=> '5.00',
  'access_token'=>$token,
@@ -106,8 +83,32 @@ $v = '5.62'; //версия vk api
 //sanding 
  $safe = file_get_contents("https://api.vk.com/method/photos.save?".http_build_query($params));
  $safe = json_decode($safe,true);
- print_r($safe);
-
 }?>
+<!-- HTML form-->
+<head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+	<?php if (!empty($error)): ?> 
+	<?= $error ?><?php elseif (!empty($result)): ?> 
+	<?= $result ?><?php endif; ?><br>
+    <section class="content">
+        <div class="container">
+            <div class="content-container-flex">
 
+                <div class="content-container">
+                  Отправка фотографий в альбом 
+                <form action="" method="post" enctype="multipart/form-data">
+                            <input type="text" name="messagelink"  placeholder="Ссылка на альбом"/>
+                            <input type="file" name="attachment[]" multiple="multiple" id="att" > <input type="submit"name="ok_album" >        
+                </form>
+            </div>
+        </div>
+    </section>
+<?php print_r($post_data); ?>
+</body>
+<?php
+print_r($result);
+print_r($safe);
+?>
 
