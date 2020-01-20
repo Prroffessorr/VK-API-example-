@@ -11,7 +11,6 @@ for($i=0; $i<$total; $i++) {
 	move_uploaded_file($tmpFilePath, $newFilePath);
   }
   }
-}
     $var1[0]='file1';
 	$var1[1]='file2';
 	$var1[2]='file3';
