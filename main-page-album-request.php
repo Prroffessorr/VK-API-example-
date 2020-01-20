@@ -23,11 +23,10 @@ for($i=0; $i<$total; $i++) {
 	  $tmpFilePath = $_FILES['attachment']['tmp_name'][$i];
 	  //Make sure we have a filepath
 	  if ($tmpFilePath != ""){
-		//Setup our new file path
-		$newFilePath = __DIR__ . '/images/' . $_FILES['attachment']['name'][$i];
-		//print_r($newFilePath);
-		$newFilePath2 =array(__DIR__ . '/images/' . $_FILES['attachment']['name'][$i]);
-	  }
+    //Setup our new file path
+	$newFilePath = __DIR__ . '/images/' . $_FILES['attachment']['name'][$i];
+	move_uploaded_file($tmpFilePath, $newFilePath);
+  }
 }
 
 //using CURL for saving photo in post_data array (most interesting for VK api example)
