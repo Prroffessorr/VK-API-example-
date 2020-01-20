@@ -5,11 +5,11 @@ for($i=0; $i<$total; $i++) {
   //Get the temp file path
   $tmpFilePath = $_FILES['files']['tmp_name'][$i];
   //Make sure we have a filepath
-  if ($tmpFilePath != ""){
+ if ($tmpFilePath != ""){
     //Setup our new file path
-    $newFilePath = __DIR__ . '/images/' . $_FILES['files']['name'][$i];
-    if(move_uploaded_file($tmpFilePath, $newFilePath)) {
-    }
+	$newFilePath = __DIR__ . '/images/' . $_FILES['attachment']['name'][$i];
+	move_uploaded_file($tmpFilePath, $newFilePath);
+  }
   }
 }
     $var1[0]='file1';
